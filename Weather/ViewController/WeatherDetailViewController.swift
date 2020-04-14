@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OAuthSwift
 
 class WeatherDetailViewController: UIViewController {
 
@@ -16,7 +15,12 @@ class WeatherDetailViewController: UIViewController {
         YahooWeatherAPI.shared.weather(location: "sunnyvale,ca", completionHandler: { result in
             switch result {
             case .success(let response):
-                try? print(response.jsonObject())
+                do {
+                    let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: response.data)
+                    print(weatherResponse)
+                } catch let error {
+                    print(error.localizedDescription)
+                }
             case .failure(let error):
               print(error.localizedDescription)
             }
