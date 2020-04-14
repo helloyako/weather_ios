@@ -19,19 +19,7 @@ class WeatherDetailViewController: UIViewController {
     }
     
     private func requestWeatherAPI(lat: Double, lon: Double) {
-        YahooWeatherAPI.shared.weather(lat: String(lat), lon: String(lon), completionHandler: { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: response.data)
-                    print(weatherResponse)
-                } catch let error {
-                    print(error.localizedDescription)
-                }
-            case .failure(let error):
-              print(error.localizedDescription)
-            }
-        })
+
     }
 }
 
