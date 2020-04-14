@@ -7,14 +7,20 @@
 //
 
 import UIKit
+import OAuthSwift
 
 class WeatherDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        YahooWeatherAPI.shared.weather(location: "sunnyvale,ca", completionHandler: { result in
+            switch result {
+            case .success(let response):
+                try? print(response.jsonObject())
+            case .failure(let error):
+              print(error.localizedDescription)
+            }
+        })
     }
-
-
 }
 

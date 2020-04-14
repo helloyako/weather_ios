@@ -16,6 +16,7 @@
 		A00E5A332445531D00189781 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E5A322445531D00189781 /* WeatherTests.swift */; };
 		A00E5A3E2445531D00189781 /* WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E5A3D2445531D00189781 /* WeatherUITests.swift */; };
 		A00E5A4E2445651F00189781 /* WeatherListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E5A4D2445651F00189781 /* WeatherListViewController.swift */; };
+		A00E5A512445915D00189781 /* YahooWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E5A502445915D00189781 /* YahooWeatherAPI.swift */; };
 		B33CE94EAF31EFA2DFC5EF53 /* Pods_Weather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CF28396197B35589143136 /* Pods_Weather.framework */; };
 		BA071222ED14FD750B8D7B36 /* Pods_Weather_WeatherUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90EBC4DFA962CFC42E44854 /* Pods_Weather_WeatherUITests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		A00E5A3D2445531D00189781 /* WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUITests.swift; sourceTree = "<group>"; };
 		A00E5A3F2445531D00189781 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00E5A4D2445651F00189781 /* WeatherListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListViewController.swift; sourceTree = "<group>"; };
+		A00E5A502445915D00189781 /* YahooWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooWeatherAPI.swift; sourceTree = "<group>"; };
 		A5CF28396197B35589143136 /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90EBC4DFA962CFC42E44854 /* Pods_Weather_WeatherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather_WeatherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C45F3C0A4B590BD0EDAD3F /* Pods-Weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.release.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		A00E5A1A2445531B00189781 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				A00E5A4F2445914800189781 /* Yahoo */,
 				A00E5A4B244564C700189781 /* ViewController */,
 				A00E5A1B2445531B00189781 /* AppDelegate.swift */,
 				A00E5A212445531B00189781 /* Main.storyboard */,
@@ -164,6 +167,14 @@
 				A00E5A4D2445651F00189781 /* WeatherListViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A00E5A4F2445914800189781 /* Yahoo */ = {
+			isa = PBXGroup;
+			children = (
+				A00E5A502445915D00189781 /* YahooWeatherAPI.swift */,
+			);
+			path = Yahoo;
 			sourceTree = "<group>";
 		};
 		F6D5A7FC513DEA3F3591FD87 /* Frameworks */ = {
@@ -417,6 +428,7 @@
 			files = (
 				A00E5A4E2445651F00189781 /* WeatherListViewController.swift in Sources */,
 				A00E5A202445531B00189781 /* WeatherDetailViewController.swift in Sources */,
+				A00E5A512445915D00189781 /* YahooWeatherAPI.swift in Sources */,
 				A00E5A1C2445531B00189781 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
