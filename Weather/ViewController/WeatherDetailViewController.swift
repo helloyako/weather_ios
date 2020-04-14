@@ -19,6 +19,7 @@ class WeatherDetailViewController: UIViewController {
     }
     
     private func requestWeatherAPI(lat: Double, lon: Double) {
+        WeatherAPI.shared.detail(lat: lat, lon: lon)
 
     }
 }

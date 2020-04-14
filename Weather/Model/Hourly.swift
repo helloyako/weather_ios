@@ -1,5 +1,5 @@
 //
-//  WeatherResponse.swift
+//  Hourly.swift
 //  Weather
 //
 //  Created by helloyako on 2020/04/14.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct WeatherResponse: Codable {
-    let current: Current
-    let hourly: [Hourly]
-    let daily: [Daily]
+struct Hourly: Codable {
+    let dt: Int
+    let temp: Double
+    let weather: [Weather]
 }
