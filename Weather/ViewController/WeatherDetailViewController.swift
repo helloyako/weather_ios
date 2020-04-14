@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherDetailViewController: UIViewController {
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        YahooWeatherAPI.shared.weather(location: "sunnyvale,ca", completionHandler: { result in
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    private func requestWeatherAPI(lat: Double, lon: Double) {
+        YahooWeatherAPI.shared.weather(lat: String(lat), lon: String(lon), completionHandler: { result in
             switch result {
             case .success(let response):
                 do {
@@ -28,3 +35,27 @@ class WeatherDetailViewController: UIViewController {
     }
 }
 
+extension WeatherDetailViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status{
+        case .restricted, .denied, .notDetermined:
+            print("you should allow permission")
+        default:
+            manager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        if let last = locations.last {
+            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
+        } else {
+            print("something wrong")
+        }
+    }
+    
+}

@@ -140,8 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				A00E5A5224459A0200189781 /* Model */,
-				A00E5A4F2445914800189781 /* Yahoo */,
 				A00E5A4B244564C700189781 /* ViewController */,
+				A00E5A4F2445914800189781 /* Yahoo */,
 				A00E5A1B2445531B00189781 /* AppDelegate.swift */,
 				A00E5A212445531B00189781 /* Main.storyboard */,
 				A00E5A242445531C00189781 /* Assets.xcassets */,
