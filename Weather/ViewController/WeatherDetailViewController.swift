@@ -19,7 +19,17 @@ class WeatherDetailViewController: UIViewController {
     }
     
     private func requestWeatherAPI(lat: Double, lon: Double) {
-        WeatherAPI.shared.detail(lat: lat, lon: lon)
+        WeatherAPI.shared.detail(lat: lat, lon: lon) { response in
+            switch response {
+            case .success(let apiResponse):
+                guard let detailResponse = apiResponse as? DetailResponse else {
+                    return
+                }
+                print(detailResponse)
+            case .error(let error):
+                print(error)
+            }
+        }
 
     }
 }

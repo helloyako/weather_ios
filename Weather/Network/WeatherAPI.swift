@@ -8,6 +8,17 @@
 
 import Foundation
 
+protocol WeatherResponse {}
+
+enum APIResponse {
+    case success(WeatherResponse)
+    case error(Error)
+}
+
+enum APIError: Error {
+    case unknown
+}
+
 class WeatherAPI {
     static let shared = WeatherAPI()
     private init() { }
@@ -16,7 +27,7 @@ class WeatherAPI {
     private let base = "https://api.openweathermap.org/data/2.5"
     private let defaultSession = URLSession(configuration: .default)
     
-    func detail(lat: Double, lon: Double) {
+    func detail(lat: Double, lon: Double, completion: ((APIResponse)->())? = nil) {
         let path = "onecall"
         guard let url = URL(string: "\(base)/\(path)?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric") else {
             return
@@ -25,13 +36,20 @@ class WeatherAPI {
         let request = URLRequest(url: url)
         
         let dataTask = defaultSession.dataTask(with: request) { data, response, error in
-            
+            guard let data = data else {
+                if let error = error {
+                    completion?(.error(error))
+                } else {
+                    completion?(.error(APIError.unknown))
+                }
+                return
+            }
             
             do {
-                let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data!)
-                print(weatherResponse)
+                let detailResponse = try JSONDecoder().decode(DetailResponse.self, from: data)
+                completion?(.success(detailResponse))
             } catch let error {
-                print(error.localizedDescription)
+                completion?(.error(error))
             }
 
         }
