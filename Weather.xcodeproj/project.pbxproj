@@ -27,6 +27,7 @@
 		A081B5402446E647006A2FF1 /* WeatherRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B53F2446E647006A2FF1 /* WeatherRootViewController.swift */; };
 		A081B5422446EC6B006A2FF1 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */; };
 		A081B544244702EE006A2FF1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B543244702EE006A2FF1 /* SearchViewController.swift */; };
+		A081B547244742A5006A2FF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081B546244742A5006A2FF1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		A081B53F2446E647006A2FF1 /* WeatherRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRootViewController.swift; sourceTree = "<group>"; };
 		A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
 		A081B543244702EE006A2FF1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A081B546244742A5006A2FF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A081B547244742A5006A2FF1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +118,7 @@
 				A00E5A3C2445531D00189781 /* WeatherUITests */,
 				A00E5A192445531B00189781 /* Products */,
 				699AF3C726FFE44C0C5460F0 /* Pods */,
+				A081B545244742A5006A2FF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -202,6 +206,14 @@
 				A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A081B545244742A5006A2FF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A081B546244742A5006A2FF1 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -11,25 +11,22 @@ import UIKit
 class WeatherListViewController: UIViewController {
 
     @IBOutlet weak var plusButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? SearchViewController {
+            destination.completion = { cood in
+                print("\(cood.lat), \(cood.lon)")
+            }
+        }
     }
-    */
-
 }
 
 extension WeatherListViewController: UITableViewDataSource {
