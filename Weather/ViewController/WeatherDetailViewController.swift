@@ -11,11 +11,15 @@ import CoreLocation
 
 class WeatherDetailViewController: UIViewController {
     let locationManager = CLLocationManager()
-
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     private func requestWeatherAPI(lat: Double, lon: Double) {
@@ -25,12 +29,32 @@ class WeatherDetailViewController: UIViewController {
                 guard let detailResponse = apiResponse as? DetailResponse else {
                     return
                 }
-                print(detailResponse)
+//                print(detailResponse)
             case .error(let error):
                 print(error)
             }
         }
 
+    }
+}
+
+extension WeatherDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath)
+        return cell
+        
+    }
+    
+    
+}
+
+extension WeatherDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
     }
 }
 
