@@ -26,6 +26,7 @@
 		A081B53E2446BCF0006A2FF1 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B53D2446BCF0006A2FF1 /* DailyTableViewCell.swift */; };
 		A081B5402446E647006A2FF1 /* WeatherRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B53F2446E647006A2FF1 /* WeatherRootViewController.swift */; };
 		A081B5422446EC6B006A2FF1 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */; };
+		A081B544244702EE006A2FF1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B543244702EE006A2FF1 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		A081B53D2446BCF0006A2FF1 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		A081B53F2446E647006A2FF1 /* WeatherRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRootViewController.swift; sourceTree = "<group>"; };
 		A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
+		A081B543244702EE006A2FF1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				A00E5A1F2445531B00189781 /* WeatherDetailViewController.swift */,
 				A00E5A4D2445651F00189781 /* WeatherListViewController.swift */,
 				A081B53F2446E647006A2FF1 /* WeatherRootViewController.swift */,
+				A081B543244702EE006A2FF1 /* SearchViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A081B544244702EE006A2FF1 /* SearchViewController.swift in Sources */,
 				A081B5402446E647006A2FF1 /* WeatherRootViewController.swift in Sources */,
 				A00E5A4E2445651F00189781 /* WeatherListViewController.swift in Sources */,
 				A00E5A5424459B2700189781 /* DetailResponse.swift in Sources */,
