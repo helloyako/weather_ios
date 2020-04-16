@@ -97,13 +97,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-SD-pEh">
-                                                            <rect key="frame" x="15" y="267" width="138" height="23"/>
+                                                            <rect key="frame" x="15" y="267" width="137.5" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWR-MI-ZtL">
-                                                            <rect key="frame" x="355" y="267" width="19.5" height="23"/>
+                                                            <rect key="frame" x="354.5" y="267" width="20" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -624,9 +624,9 @@
                                         </constraints>
                                     </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kzs-Sf-7Lb">
-                                        <rect key="frame" x="373" y="14" width="21" height="22"/>
+                                        <rect key="frame" x="372" y="14" width="22" height="22"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="list.dash" catalog="system"/>
+                                        <state key="normal" image="list_icon"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -918,7 +918,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="list_icon" width="22" height="22"/>
         <image name="openweather_logo" width="50" height="21.5"/>
         <image name="plus_icon" width="22" height="22"/>
         <image name="wicontemp" width="50" height="50"/>
