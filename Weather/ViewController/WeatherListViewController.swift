@@ -9,7 +9,9 @@
 import UIKit
 
 class WeatherListViewController: UIViewController, OpenWeather {
-    var weathers: [WeatherResponse] = []
+    private var weathers: [WeatherResponse] = []
+    private let weatherMaxCount = 20
+    
     weak var rootViewController: WeatherRootViewController?
 
     @IBOutlet weak var plusButton: UIButton!
@@ -28,19 +30,26 @@ class WeatherListViewController: UIViewController, OpenWeather {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SearchViewController {
             destination.completion = { [weak self] cood in
+                self?.plusButton.isEnabled = false
                 self?.rootViewController?.requestWeather(lat: cood.lat, lon: cood.lon)
             }
         }
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    func updateModel(weathers: [WeatherResponse]) {
+        self.weathers = weathers
+        plusButton.isEnabled = weathers.count < weatherMaxCount
+        reloadData()
     }
     
     @IBAction func scaleButtonAction(_ sender: UIButton) {
         celsiusButton.isSelected = !celsiusButton.isSelected
         fahrenheitButton.isSelected = !fahrenheitButton.isSelected
         rootViewController?.toggleScale()
-    }
-    
-    func reloadData() {
-        tableView.reloadData()
     }
     
     @IBAction func openWeatherButtonAction(_ sender: UIButton) {

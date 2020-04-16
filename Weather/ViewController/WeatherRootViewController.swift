@@ -51,8 +51,9 @@ class WeatherRootViewController: UIViewController {
                 }
                 DispatchQueue.main.async { [weak self] in
                     self?.weathers.append(weatherResponse)
-                    self?.listViewController?.weathers = self?.weathers ?? []
-                    self?.listViewController?.tableView.reloadData()
+                    if let weathers = self?.weathers {
+                        self?.listViewController?.updateModel(weathers: weathers)
+                    }
                 }
             case .error(let error):
                 print(error)
