@@ -21,21 +21,6 @@ class WeatherDetailViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
-    private func requestWeatherAPI(lat: Double, lon: Double) {
-        WeatherAPI.shared.detail(lat: lat, lon: lon) { response in
-            switch response {
-            case .success(let apiResponse):
-                guard let detailResponse = apiResponse as? DetailResponse else {
-                    return
-                }
-//                print(detailResponse)
-            case .error(let error):
-                print(error)
-            }
-        }
-
-    }
 }
 
 extension WeatherDetailViewController: UICollectionViewDataSource {
@@ -75,7 +60,7 @@ extension WeatherDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
         if let last = locations.last {
-            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
+//            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
         } else {
             print("something wrong")
         }

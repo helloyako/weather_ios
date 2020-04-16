@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DetailResponse: WeatherResponse, Codable {
+struct OneCallResponse: Response, Codable {
     let current: Current
     let hourly: [Hourly]
     let daily: [Daily]

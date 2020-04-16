@@ -150,12 +150,3 @@ extension SearchViewController: MKLocalSearchCompleterDelegate {
         print(error)
     }
 }
-
-extension NSMutableAttributedString{
-    func setColorForText(_ textToFind: String, with color: UIColor) {
-        let range = mutableString.range(of: textToFind, options: .caseInsensitive)
-        if range.location != NSNotFound && range.location == 0 {
-            addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
-        }
-    }
-}

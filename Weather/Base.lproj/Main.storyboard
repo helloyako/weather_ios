@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -97,13 +97,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-SD-pEh">
-                                                            <rect key="frame" x="15" y="267" width="137.5" height="23"/>
+                                                            <rect key="frame" x="15" y="267" width="138" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWR-MI-ZtL">
-                                                            <rect key="frame" x="354.5" y="267" width="20" height="23"/>
+                                                            <rect key="frame" x="355" y="267" width="19.5" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -710,6 +710,12 @@
                                             <rect key="frame" x="182" y="11" width="50" height="22"/>
                                             <state key="normal" image="openweather_logo"/>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0w-f6-puM">
+                                            <rect key="frame" x="10" y="5" width="65.5" height="34"/>
+                                            <connections>
+                                                <action selector="scaleButtonAction:" destination="KEa-lx-vCu" eventType="touchUpInside" id="EUc-zp-ALi"/>
+                                            </connections>
+                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khE-17-055">
                                             <rect key="frame" x="384" y="11" width="20" height="22"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -723,9 +729,13 @@
                                         <constraint firstItem="baa-Ap-BuC" firstAttribute="centerY" secondItem="1cM-Ar-jOH" secondAttribute="centerY" id="0r0-p9-zrh"/>
                                         <constraint firstItem="khE-17-055" firstAttribute="centerY" secondItem="1cM-Ar-jOH" secondAttribute="centerY" id="1pV-PT-0gA"/>
                                         <constraint firstItem="a9B-gC-kS7" firstAttribute="centerY" secondItem="1cM-Ar-jOH" secondAttribute="centerY" id="5hQ-Ev-dxX"/>
+                                        <constraint firstItem="P0w-f6-puM" firstAttribute="trailing" secondItem="baa-Ap-BuC" secondAttribute="trailing" id="6eV-g9-sQM"/>
                                         <constraint firstItem="baa-Ap-BuC" firstAttribute="leading" secondItem="1cM-Ar-jOH" secondAttribute="leading" constant="10" id="7IW-oJ-2K2"/>
+                                        <constraint firstItem="P0w-f6-puM" firstAttribute="leading" secondItem="baa-Ap-BuC" secondAttribute="leading" id="BwF-J7-zC7"/>
                                         <constraint firstItem="a9B-gC-kS7" firstAttribute="centerX" secondItem="1cM-Ar-jOH" secondAttribute="centerX" id="FOk-KY-tc1"/>
                                         <constraint firstAttribute="trailing" secondItem="khE-17-055" secondAttribute="trailing" constant="10" id="KxN-4P-S9W"/>
+                                        <constraint firstItem="P0w-f6-puM" firstAttribute="top" secondItem="baa-Ap-BuC" secondAttribute="top" id="LUe-qY-dRW"/>
+                                        <constraint firstItem="P0w-f6-puM" firstAttribute="bottom" secondItem="baa-Ap-BuC" secondAttribute="bottom" id="Uyv-ET-Pg2"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -778,6 +788,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="Ozx-ft-H0a" id="q8D-XQ-kru"/>
+                                            <outlet property="dateLabel" destination="vMn-8w-z9B" id="PP8-Kh-jwd"/>
+                                            <outlet property="temperatureLabel" destination="Elh-1y-mu2" id="6mc-hO-OkW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -792,6 +807,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qmt-I1-Bzp"/>
                     <connections>
+                        <outlet property="celsiusButton" destination="iJt-fK-t76" id="cU6-1c-NtS"/>
+                        <outlet property="fahrenheitButton" destination="jZ8-Br-PuF" id="qSV-Tq-18T"/>
                         <outlet property="plusButton" destination="khE-17-055" id="5DI-wM-zkx"/>
                         <outlet property="tableView" destination="Q3y-t5-v79" id="UqQ-at-IS6"/>
                     </connections>

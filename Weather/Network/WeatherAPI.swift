@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol WeatherResponse {}
+protocol Response {}
 
 enum APIResponse {
-    case success(WeatherResponse)
+    case success(Response)
     case error(Error)
 }
 
@@ -27,9 +27,10 @@ class WeatherAPI {
     private let base = "https://api.openweathermap.org/data/2.5"
     private let defaultSession = URLSession(configuration: .default)
     
-    func detail(lat: Double, lon: Double, completion: ((APIResponse)->())? = nil) {
+    func oneCall(lat: Double, lon: Double, completion: ((APIResponse)->())? = nil) {
         let path = "onecall"
-        guard let url = URL(string: "\(base)/\(path)?lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric") else {
+        let queryParameter = makeQueryParameter(lat: lat, lon: lon)
+        guard let url = URL(string: "\(base)/\(path)?lat=\(lat)&\(queryParameter)") else {
             return
         }
         
@@ -46,8 +47,8 @@ class WeatherAPI {
             }
             
             do {
-                let detailResponse = try JSONDecoder().decode(DetailResponse.self, from: data)
-                completion?(.success(detailResponse))
+                let oneCallResponse = try JSONDecoder().decode(OneCallResponse.self, from: data)
+                completion?(.success(oneCallResponse))
             } catch let error {
                 completion?(.error(error))
             }
@@ -55,6 +56,40 @@ class WeatherAPI {
         }
         
         dataTask.resume()
+    }
+    
+    func weather(lat: Double, lon: Double, completion: ((APIResponse)->())? = nil) {
+        let path = "weather"
+        let queryParameter = makeQueryParameter(lat: lat, lon: lon)
+        guard let url = URL(string: "\(base)/\(path)?\(queryParameter)") else {
+            return
+        }
+        let request = URLRequest(url: url)
+        
+        let dataTask = defaultSession.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                if let error = error {
+                    completion?(.error(error))
+                } else {
+                    completion?(.error(APIError.unknown))
+                }
+                return
+            }
+            
+            do {
+                let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
+                completion?(.success(weatherResponse))
+            } catch let error {
+                completion?(.error(error))
+            }
+
+        }
+        
+        dataTask.resume()
+    }
+    
+    private func makeQueryParameter(lat: Double, lon: Double) -> String {
+        return "lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric"
     }
     
 }
