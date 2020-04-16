@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherListViewController: UIViewController {
+class WeatherListViewController: UIViewController, OpenWeather {
     var weathers: [WeatherResponse] = []
     weak var rootViewController: WeatherRootViewController?
 
@@ -43,6 +43,9 @@ class WeatherListViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func openWeatherButtonAction(_ sender: UIButton) {
+        showOpenWeatherSafari()
+    }
 }
 
 extension WeatherListViewController: UITableViewDataSource {
