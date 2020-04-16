@@ -720,9 +720,9 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khE-17-055">
-                                            <rect key="frame" x="384" y="11" width="20" height="22"/>
+                                            <rect key="frame" x="382" y="11" width="22" height="22"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" image="plus.circle" catalog="system"/>
+                                            <state key="normal" image="plus_icon"/>
                                             <connections>
                                                 <segue destination="vhQ-DS-LQH" kind="show" id="Ulh-ub-OzO"/>
                                             </connections>
@@ -920,7 +920,7 @@
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="openweather_logo" width="50" height="21.5"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus_icon" width="22" height="22"/>
         <image name="wicontemp" width="50" height="50"/>
     </resources>
 </document>
