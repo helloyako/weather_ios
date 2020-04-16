@@ -108,4 +108,12 @@ class WeatherRootViewController: UIViewController {
     func toggleScale() {
         isCelsius.toggle()
     }
+    
+    func removeWeather(at index: Int) {
+        weathers.remove(at: index)
+        if var array = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
+            array.remove(at: index)
+            UserDefaults.standard.set(array, forKey: idsKey)
+        }
+    }
 }

@@ -36,13 +36,17 @@ class WeatherListViewController: UIViewController, OpenWeather {
         }
     }
     
+    private func checkPlusButton() {
+        plusButton.isEnabled = weathers.count < weatherMaxCount
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }
     
     func updateModel(weathers: [WeatherResponse]) {
         self.weathers = weathers
-        plusButton.isEnabled = weathers.count < weatherMaxCount
+        checkPlusButton()
         reloadData()
     }
     
@@ -74,10 +78,13 @@ extension WeatherListViewController: UITableViewDataSource {
         cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + weather.timezone).display
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        weathers.remove(at: indexPath.row)
+        checkPlusButton()
+        rootViewController?.removeWeather(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.endUpdates()
+    }
 }
-//
-//extension WeatherListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
-//}
