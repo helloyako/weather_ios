@@ -9,7 +9,7 @@
 import UIKit
 
 class WeatherListViewController: UIViewController, OpenWeather {
-    private var weathers: [WeatherResponse] = []
+    private var displayModels: [DisplayModel] = []
     private let weatherMaxCount = 20
     
     weak var rootViewController: WeatherRootViewController?
@@ -37,15 +37,15 @@ class WeatherListViewController: UIViewController, OpenWeather {
     }
     
     private func checkPlusButton() {
-        plusButton.isEnabled = weathers.count < weatherMaxCount
+        plusButton.isEnabled = displayModels.count < weatherMaxCount
     }
     
     func reloadData() {
         tableView.reloadData()
     }
     
-    func updateModel(weathers: [WeatherResponse]) {
-        self.weathers = weathers
+    func updateModel(displayModels: [DisplayModel]) {
+        self.displayModels = displayModels
         checkPlusButton()
         reloadData()
     }
@@ -63,23 +63,23 @@ class WeatherListViewController: UIViewController, OpenWeather {
 
 extension WeatherListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weathers.count
+        return displayModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherListTableViewCell") as? WeatherListTableViewCell else {
             return UITableViewCell()
         }
-        let weather = weathers[indexPath.row]
-        cell.temperatureLabel.text = weather.main.temp.toTemperatureDegree(isCelsius: rootViewController?.isCelsius ?? true)
-        cell.cityLabel.text = weather.name
-        cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + weather.timezone).display
+        let displayModel = displayModels[indexPath.row]
+        cell.temperatureLabel.text = displayModel.temperature.toTemperatureDegree(isCelsius: rootViewController?.isCelsius ?? true)
+        cell.cityLabel.text = displayModel.name
+        cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + displayModel.timeZone).display
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
-        weathers.remove(at: indexPath.row)
+        displayModels.remove(at: indexPath.row)
         checkPlusButton()
         rootViewController?.removeWeather(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)

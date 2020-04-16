@@ -19,12 +19,15 @@ struct ListItem: Codable {
     let name: String
     let sys: Sys
     let main: Main
+    let coord: Coord
     
-    func convertWeatherResponseModel() -> WeatherResponse {
-        return WeatherResponse(id: id, name: name, dt: dt, timezone: sys.timezone, main: main)
+    func convertDisplayModel() -> DisplayModel {
+        return DisplayModel(coord: coord, temperature: main.temp, name: name, timeZone: sys.timezone)
+    }
+    
+    struct Sys: Codable {
+        let timezone: Double
     }
 }
 
-struct Sys: Codable {
-    let timezone: Double
-}
+

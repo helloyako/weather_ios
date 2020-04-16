@@ -20,7 +20,7 @@ class WeatherRootViewController: UIViewController {
     @IBOutlet weak var listContainerView: UIView!
     
     
-    var weathers: [WeatherResponse] = []
+    var displayModels: [DisplayModel] = []
     private(set) var isCelsius = true {
         didSet {
             listViewController?.reloadData()
@@ -75,9 +75,9 @@ class WeatherRootViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async { [weak self] in
-                    self?.weathers.append(contentsOf: listResponse.list.map{ $0.convertWeatherResponseModel() })
-                    if let weathers = self?.weathers {
-                        self?.listViewController?.updateModel(weathers: weathers)
+                    self?.displayModels.append(contentsOf: listResponse.list.map{ $0.convertDisplayModel() })
+                    if let displayModels = self?.displayModels {
+                        self?.listViewController?.updateModel(displayModels: displayModels)
                     }
                 }
             case .error(let error):
@@ -96,9 +96,9 @@ class WeatherRootViewController: UIViewController {
                 
                 DispatchQueue.main.async { [weak self] in
                     self?.saveID(id: weatherResponse.id)
-                    self?.weathers.append(weatherResponse)
-                    if let weathers = self?.weathers {
-                        self?.listViewController?.updateModel(weathers: weathers)
+                    self?.displayModels.append(weatherResponse.convertDisplayModel())
+                    if let displayModels = self?.displayModels {
+                        self?.listViewController?.updateModel(displayModels: displayModels)
                     }
                 }
             case .error(let error):
@@ -112,7 +112,7 @@ class WeatherRootViewController: UIViewController {
     }
     
     func removeWeather(at index: Int) {
-        weathers.remove(at: index)
+        displayModels.remove(at: index)
         if var array = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
             array.remove(at: index)
             UserDefaults.standard.set(array, forKey: idsKey)
