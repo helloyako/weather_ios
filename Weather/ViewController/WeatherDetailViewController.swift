@@ -7,16 +7,13 @@
 //
 
 import UIKit
-import CoreLocation
 
 class WeatherDetailViewController: UIViewController {
-    let locationManager = CLLocationManager()
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -33,37 +30,10 @@ extension WeatherDetailViewController: UICollectionViewDataSource {
         return cell
         
     }
-    
-    
 }
 
 extension WeatherDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
-}
-
-extension WeatherDetailViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status{
-        case .restricted, .denied, .notDetermined:
-            print("you should allow permission")
-        default:
-            manager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        manager.stopUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
-        if let last = locations.last {
-//            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
-        } else {
-            print("something wrong")
-        }
-    }
-    
 }

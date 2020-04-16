@@ -73,8 +73,6 @@ extension WeatherListViewController: UITableViewDataSource {
         let weather = weathers[indexPath.row]
         cell.temperatureLabel.text = weather.main.temp.toTemperatureDegree(isCelsius: rootViewController?.isCelsius ?? true)
         cell.cityLabel.text = weather.name
-        
-        
         cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + weather.timezone).display
         return cell
     }

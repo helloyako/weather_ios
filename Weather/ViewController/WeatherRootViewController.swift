@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherRootViewController: UIViewController {
     private let idsKey = "ids"
+    private let locationManager = CLLocationManager()
+    
     private weak var listViewController: WeatherListViewController? = nil
     private weak var detailViewController: WeatherDetailViewController? = nil
     
@@ -30,10 +33,9 @@ class WeatherRootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
 
-        detailContainerView.isHidden = true
-        listContainerView.isHidden = false
-        
         if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
             requestCitied(ids: ids)
         } else {
@@ -116,4 +118,45 @@ class WeatherRootViewController: UIViewController {
             UserDefaults.standard.set(array, forKey: idsKey)
         }
     }
+    
+    func showListView() {
+        detailContainerView.isHidden = true
+        listContainerView.isHidden = false
+    }
+
+    func showDetailView() {
+        detailContainerView.isHidden = false
+        listContainerView.isHidden = true
+    }
+    
+}
+
+
+extension WeatherRootViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status{
+        case .restricted, .denied:
+            print("you should allow permission")
+            showListView()
+        case .notDetermined:
+            print("notDetermined")
+        default:
+            print("greate!!")
+            manager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        manager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        manager.stopUpdatingLocation()
+        if let last = locations.last {
+//            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
+        } else {
+            print("something wrong")
+        }
+    }
+    
 }
