@@ -9,13 +9,22 @@
 import Foundation
 
 struct ListResponse: Response, Codable {
-    let list: [WeatherResponse]
+    let list: [ListItem]
     
 }
 
-//struct ListItem: Codable {
-//    let id: Int
-//    let dt: Int
-//    let name: String
-//    let main: [Main]
-//}
+struct ListItem: Codable {
+    let id: Int
+    let dt: Double
+    let name: String
+    let sys: Sys
+    let main: Main
+    
+    func convertWeatherResponseModel() -> WeatherResponse {
+        return WeatherResponse(id: id, name: name, dt: dt, timezone: sys.timezone, main: main)
+    }
+}
+
+struct Sys: Codable {
+    let timezone: Double
+}

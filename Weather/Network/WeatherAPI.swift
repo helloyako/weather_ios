@@ -88,8 +88,44 @@ class WeatherAPI {
         dataTask.resume()
     }
     
-    private func makeQueryParameter(lat: Double, lon: Double) -> String {
-        return "lat=\(lat)&lon=\(lon)&appid=\(apiKey)&units=metric"
+    func group(ids: [Int], completion: ((APIResponse)->())? = nil) {
+        let path = "group"
+        let idsValue = ids.map { String($0) }.joined(separator: ",")
+        let queryParameter = "id=\(idsValue)&units=metric&\(commonParameter)"
+        guard let url = URL(string: "\(base)/\(path)?\(queryParameter)") else {
+            return
+        }
+        let request = URLRequest(url: url)
+        print(url.absoluteString)
+        
+        let dataTask = defaultSession.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                if let error = error {
+                    completion?(.error(error))
+                } else {
+                    completion?(.error(APIError.unknown))
+                }
+                return
+            }
+            
+            do {
+                let listResponse = try JSONDecoder().decode(ListResponse.self, from: data)
+                completion?(.success(listResponse))
+            } catch let error {
+                completion?(.error(error))
+            }
+
+        }
+        
+        dataTask.resume()
+        
     }
     
+    private func makeQueryParameter(lat: Double, lon: Double) -> String {
+        return "lat=\(lat)&lon=\(lon)&\(commonParameter)"
+    }
+    
+    private var commonParameter: String {
+        return "appid=\(apiKey)&units=metric"
+    }
 }
