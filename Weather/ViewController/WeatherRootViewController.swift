@@ -149,9 +149,10 @@ class WeatherRootViewController: UIViewController {
         listContainerView.isHidden = false
     }
 
-    func showDetailView() {
+    func showDetailView(at index: Int) {
         detailContainerView.isHidden = false
         listContainerView.isHidden = true
+        detailViewController?.scrollToItem(at: index)
     }
     
 }
@@ -167,7 +168,7 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
             print("notDetermined")
         default:
             print("greate!!")
-            showDetailView()
+            showDetailView(at: 0)
             manager.startUpdatingLocation()
         }
     }

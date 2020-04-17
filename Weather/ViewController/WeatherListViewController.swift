@@ -18,6 +18,7 @@ class WeatherListViewController: UIViewController, OpenWeather {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
+            tableView.delegate = self
         }
     }
     
@@ -74,6 +75,11 @@ extension WeatherListViewController: UITableViewDataSource {
         cell.temperatureLabel.text = displayModel.temperature.toTemperatureDegree(isCelsius: rootViewController?.isCelsius ?? true)
         cell.cityLabel.text = displayModel.name
         cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + displayModel.timeZone).display
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = .clear
+        cell.selectedBackgroundView = bgColorView
+
         return cell
     }
     
@@ -84,5 +90,12 @@ extension WeatherListViewController: UITableViewDataSource {
         rootViewController?.removeWeather(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.endUpdates()
+    }
+}
+
+extension WeatherListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        rootViewController?.showDetailView(at: indexPath.item)
     }
 }

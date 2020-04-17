@@ -32,6 +32,12 @@ class WeatherDetailViewController: UIViewController, OpenWeather {
         collectionView.reloadData()
     }
     
+    func scrollToItem(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .right, animated: false)
+        pageControl.currentPage = index
+    }
+    
     @IBAction func openWeatherButtonAction(_ sender: UIButton) {
         showOpenWeatherSafari()
     }
