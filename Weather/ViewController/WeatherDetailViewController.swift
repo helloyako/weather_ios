@@ -11,6 +11,8 @@ import UIKit
 class WeatherDetailViewController: UIViewController, OpenWeather {
     private var displayModels: [DisplayModel] = []
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     weak var rootViewController: WeatherRootViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,12 @@ class WeatherDetailViewController: UIViewController, OpenWeather {
     
     func updateModel(displayModels: [DisplayModel]) {
         self.displayModels = displayModels
+        if displayModels.count > 1 {
+            pageControl.numberOfPages = displayModels.count
+            pageControl.isHidden = false
+        } else {
+            pageControl.isHidden = true
+        }
         collectionView.reloadData()
     }
     
@@ -54,5 +62,10 @@ extension WeatherDetailViewController: UICollectionViewDataSource {
 extension WeatherDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / scrollView.frame.width)
+        pageControl.currentPage = page
     }
 }

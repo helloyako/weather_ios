@@ -635,7 +635,7 @@
                                             <action selector="openWeatherButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fDR-uB-oFW"/>
                                         </connections>
                                     </button>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VZg-Dc-ZDM">
+                                    <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="VZg-Dc-ZDM">
                                         <rect key="frame" x="82" y="6.5" width="250" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="HH4-oW-oBv"/>
@@ -677,6 +677,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Lv4-VX-5dc" id="Amj-PO-qN8"/>
+                        <outlet property="pageControl" destination="VZg-Dc-ZDM" id="Bhk-fu-hMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
