@@ -60,3 +60,16 @@ extension Double {
         return (Int(degree))
     }
 }
+
+extension UIImageView {
+    func loadWeatherIconImage(iconName name: String) {
+        WeatherAPI.shared.loadWeatherIconImage(iconName: name) { image in
+            DispatchQueue.main.async {
+                UIView.transition(with: self, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                    self.image = image
+                }, completion: nil)
+            }
+        }
+        
+    }
+}

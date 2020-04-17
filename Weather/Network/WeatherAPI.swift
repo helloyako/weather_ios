@@ -6,7 +6,7 @@
 //  Copyright © 2020 helloyako. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Response {}
 
@@ -26,6 +26,7 @@ class WeatherAPI {
     private let apiKey = "78e16436406fb05abbf0d9489d91200c"
     private let base = "https://api.openweathermap.org/data/2.5"
     private let defaultSession = URLSession(configuration: .default)
+    let cache = URLCache.shared
     
     func oneCall(lat: Double, lon: Double, completion: ((APIResponse)->())? = nil) {
         let path = "onecall"
@@ -119,6 +120,28 @@ class WeatherAPI {
         dataTask.resume()
         
     }
+    
+    func loadWeatherIconImage(iconName name: String, completion: ((UIImage)->())? = nil) {
+        let url = "http://openweathermap.org/img/wn/\(name)@2x.png"
+        guard let imageURL = URL(string: url) else {
+            return
+        }
+        
+        let request = URLRequest(url: imageURL)
+        if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+            completion?(image)
+        } else {
+            let dataTask = defaultSession.dataTask(with: request) { [weak self] data, response, error in
+                if let data = data, let response = response, let image = UIImage(data: data) {
+                    let cacheData = CachedURLResponse(response: response, data: data)
+                    self?.cache.storeCachedResponse(cacheData, for: request)
+                    completion?(image)
+                }
+            }
+            dataTask.resume()
+        }
+    }
+    
     
     private func makeQueryParameter(lat: Double, lon: Double) -> String {
         return "lat=\(lat)&lon=\(lon)&\(commonParameter)"

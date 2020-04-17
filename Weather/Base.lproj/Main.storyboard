@@ -175,8 +175,12 @@
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wicontemp" translatesAutoresizingMaskIntoConstraints="NO" id="mzc-OF-YtM">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mzc-OF-YtM">
                                                                                 <rect key="frame" x="3.5" y="9.5" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="9tT-mQ-2Za"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="dkS-N4-l02"/>
+                                                                                </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h06-cj-H03">
                                                                                 <rect key="frame" x="16" y="59.5" width="25.5" height="20.5"/>
@@ -236,8 +240,12 @@
                                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wicontemp" translatesAutoresizingMaskIntoConstraints="NO" id="2w0-l9-xX3">
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2w0-l9-xX3">
                                                                                         <rect key="frame" x="185.5" y="-3" width="50" height="50"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" constant="50" id="E5Z-5C-Pwf"/>
+                                                                                            <constraint firstAttribute="height" constant="50" id="ays-DS-ULq"/>
+                                                                                        </constraints>
                                                                                     </imageView>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCw-ls-n2O">
                                                                                         <rect key="frame" x="360" y="10.5" width="19.5" height="23"/>
@@ -968,6 +976,5 @@
         <image name="list_icon" width="22" height="22"/>
         <image name="openweather_logo" width="50" height="21.5"/>
         <image name="plus_icon" width="22" height="22"/>
-        <image name="wicontemp" width="50" height="50"/>
     </resources>
 </document>

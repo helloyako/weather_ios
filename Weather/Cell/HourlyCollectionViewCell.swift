@@ -16,6 +16,9 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     func bind(model: Hourly, isCelsius: Bool, timezone: Double) {
         hourLabel.text = Date(timeIntervalSince1970: model.dt + timezone).displayHourOnlyWithAmPm
         temperatureLabel.text = model.temp.toTemperatureDegree(isCelsius: isCelsius)
-        
+        iconImageView.image = .none
+        if let icon = model.weather.first?.icon {
+            iconImageView.loadWeatherIconImage(iconName: icon)
+        }
     }
 }

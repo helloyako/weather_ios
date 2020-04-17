@@ -20,5 +20,9 @@ class DailyTableViewCell: UITableViewCell {
         dayLabel.text = CalendarUtil.shared.getWeekday(model.dt + timezone)
         maxTemperatureLabel.text = String(model.temp.max.toTemperature(isCelsius: isCelsius))
         minTemperatureLabel.text = String(model.temp.min.toTemperature(isCelsius: isCelsius))
+        iconImageView.image = .none
+        if let icon = model.weather.first?.icon {
+            iconImageView.loadWeatherIconImage(iconName: icon)
+        }
     }
 }
