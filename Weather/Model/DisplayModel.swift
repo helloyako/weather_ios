@@ -13,14 +13,20 @@ struct DisplayModel {
     let temperature: Double
     let name: String
     let timeZone: Double
-    var sunset: Double? = nil
-    var sunrise: Double? = nil
-    var precipitation: String? = nil
-    var humidity: Int? = nil
-    var wind: String? = nil
-    var feelsLike: Int? = nil
-    var pressure: Int? = nil
-    var visibility: Int? = nil
+    var weatherName: String?
+    let maxTemperature: Double
+    let minTemperature: Double
+    var sunset: Double
+    var sunrise: Double
+    var humidity: Int
+    var feelsLike: Double
+    var pressure: Int
+    var visibility: Int
+    var wind: Wind
+    
+    var precipitation: Double? = nil
+    
+    
     var uvIndex: Int? = nil
     var daily: [Daily]? = nil
     var hourly: [Hourly]? = nil

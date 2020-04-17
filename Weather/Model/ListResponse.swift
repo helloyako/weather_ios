@@ -20,14 +20,20 @@ struct ListItem: Codable {
     let sys: Sys
     let main: Main
     let coord: Coord
-    
+    let weather: [Weather]
+    let wind: Wind
+    let visibility: Int
     func convertDisplayModel() -> DisplayModel {
-        return DisplayModel(coord: coord, temperature: main.temp, name: name, timeZone: sys.timezone)
+        
+        return DisplayModel(coord: coord, temperature: main.temp, name: name, timeZone: sys.timezone, weatherName: weather.first?.main, maxTemperature: main.temp_max, minTemperature: main.temp_min, sunset: sys.sunset, sunrise: sys.sunrise, humidity: main.humidity, feelsLike: main.feels_like, pressure: main.pressure, visibility: visibility, wind: wind, precipitation: nil, uvIndex: nil, daily: nil, hourly: nil)
     }
     
     struct Sys: Codable {
         let timezone: Double
+        let sunrise: Double
+        let sunset: Double
     }
+
 }
 
 

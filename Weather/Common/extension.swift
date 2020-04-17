@@ -24,6 +24,15 @@ extension Date {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
+    
+    var displayAmPm: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "h:mma"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension Double {
@@ -33,5 +42,13 @@ extension Double {
             degree = (degree * 9 / 5) + 32
         }
         return "\(Int(degree))°"
+    }
+    
+    func toTemperature(isCelsius: Bool) -> Int {
+        var degree = self
+        if !isCelsius {
+            degree = (degree * 9 / 5) + 32
+        }
+        return (Int(degree))
     }
 }

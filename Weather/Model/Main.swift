@@ -14,5 +14,5 @@ struct Main: Codable {
     let temp_max: Double
     let pressure: Int
     let humidity: Int
-    let feels_like: Double?
+    let feels_like: Double
 }

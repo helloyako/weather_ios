@@ -36,7 +36,7 @@ class WeatherListViewController: UIViewController, OpenWeather {
         }
     }
     
-    private func checkPlusButton() {
+    func checkPlusButton() {
         plusButton.isEnabled = displayModels.count < weatherMaxCount
     }
     

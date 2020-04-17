@@ -22,4 +22,15 @@ struct Current: Codable {
     let wind_speed: Double
     let wind_deg: Int
     let weather: [Weather]
+    let rain: Precipitaion?
+    let snow: Precipitaion?
+    
+    struct Precipitaion: Codable {
+        let oneH: Double
+        let threeH: Double
+        enum CodingKeys: String, CodingKey {
+            case oneH = "1h"
+            case threeH = "3h"
+        }
+    }
 }

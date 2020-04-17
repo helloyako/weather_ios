@@ -9,6 +9,23 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherNameLabel: UILabel!
+    @IBOutlet weak var highTemperatureLabel: UILabel!
+    @IBOutlet weak var lowTemperatureLabel: UILabel!
+    
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var chanceOfRainLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
+    @IBOutlet weak var precipitationLabel: UILabel!
+    @IBOutlet weak var pressureLabel: UILabel!
+    
+    @IBOutlet weak var visibilityLabel: UILabel!
+    @IBOutlet weak var uviLabel: UILabel!
     
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint! {
         didSet {
@@ -26,6 +43,30 @@ class DetailCollectionViewCell: UICollectionViewCell {
             tableView.dataSource = self
             tableView.delegate = self
         }
+    }
+    
+    func bind(model: DisplayModel, isCelsius: Bool) {
+        cityNameLabel.text = model.name
+        temperatureLabel.text = model.temperature.toTemperatureDegree(isCelsius: isCelsius)
+        weatherNameLabel.text = model.weatherName
+        highTemperatureLabel.text = String(model.maxTemperature.toTemperature(isCelsius: isCelsius))
+        lowTemperatureLabel.text = String(model.minTemperature.toTemperature(isCelsius: isCelsius))
+        
+        
+        sunriseLabel.text = Date(timeIntervalSince1970: model.sunrise + model.timeZone).displayAmPm
+        sunsetLabel.text = Date(timeIntervalSince1970: model.sunset + model.timeZone).displayAmPm
+        humidityLabel.text = "\(model.humidity)%"
+        windLabel.text = model.wind.description
+        feelsLikeLabel.text = model.feelsLike.toTemperatureDegree(isCelsius: isCelsius)
+        pressureLabel.text = "\(model.pressure)hPa"
+        visibilityLabel.text = "\(model.visibility)m"
+        
+        if let precipitation = model.precipitation {
+            precipitationLabel.text = "\(precipitation)mm"
+        } else {
+            precipitationLabel.text = "0mm"
+        }
+        
     }
 }
 

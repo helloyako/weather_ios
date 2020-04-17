@@ -50,6 +50,7 @@ class WeatherRootViewController: UIViewController {
             destination.rootViewController = self
             listViewController = destination
         } else if let destination = segue.destination as? WeatherDetailViewController {
+            destination.rootViewController = self
             detailViewController = destination
         }
     }
@@ -86,24 +87,38 @@ class WeatherRootViewController: UIViewController {
         }
     }
     
-    func requestWeather(lat: Double, lon: Double) {
-        WeatherAPI.shared.weather(lat: lat, lon: lon) { response in
+    func requestWeather(lat: Double, lon: Double, isCurrentLocation: Bool = false) {
+        WeatherAPI.shared.weather(lat: lat, lon: lon) { [weak self] response in
             switch response {
             case .success(let apiResponse):
                 guard let weatherResponse = apiResponse as? WeatherResponse else {
                     return
                 }
                 
-                DispatchQueue.main.async { [weak self] in
+                let displayModel = weatherResponse.convertDisplayModel()
+                if isCurrentLocation {
+                    self?.displayModels.insert(displayModel, at: 0)
+                } else {
                     self?.saveID(id: weatherResponse.id)
-                    self?.displayModels.append(weatherResponse.convertDisplayModel())
+                    self?.displayModels.append(displayModel)
+                }
+                
+                DispatchQueue.main.async { [weak self] in
                     if let displayModels = self?.displayModels {
                         self?.listViewController?.updateModel(displayModels: displayModels)
+                        self?.detailViewController?.updateModel(displayModels: displayModels)
                     }
                 }
             case .error(let error):
+                self?.listViewController?.checkPlusButton()
                 print(error)
             }
+        }
+    }
+    
+    func requestOneCall(lat: Double, lon: Double) {
+        WeatherAPI.shared.oneCall(lat: lat, lon: lon) { response in
+            
         }
     }
     
@@ -142,6 +157,7 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
             print("notDetermined")
         default:
             print("greate!!")
+            showDetailView()
             manager.startUpdatingLocation()
         }
     }
@@ -153,7 +169,7 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         manager.stopUpdatingLocation()
         if let last = locations.last {
-//            requestWeatherAPI(lat: last.coordinate.latitude, lon: last.coordinate.longitude)
+            requestWeather(lat: last.coordinate.latitude, lon: last.coordinate.longitude, isCurrentLocation: true)
         } else {
             print("something wrong")
         }
