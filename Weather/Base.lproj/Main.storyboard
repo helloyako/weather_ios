@@ -84,6 +84,9 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass" translatesAutoresizingMaskIntoConstraints="NO" id="kdn-iu-Y01">
+                                                            <rect key="frame" x="227.5" y="38" width="12" height="12"/>
+                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjO-e5-LOV">
                                                             <rect key="frame" x="206.5" y="91" width="8" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -123,12 +126,14 @@
                                                         </view>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="kdn-iu-Y01" firstAttribute="bottom" secondItem="X6j-Bc-fT8" secondAttribute="top" id="3Jr-ZU-FXV"/>
                                                         <constraint firstAttribute="height" constant="300" id="9hd-2S-hjv"/>
                                                         <constraint firstAttribute="bottom" secondItem="o0g-P6-3Nf" secondAttribute="bottom" id="Awj-kv-Rbn"/>
                                                         <constraint firstItem="THx-mc-Uba" firstAttribute="top" secondItem="DjO-e5-LOV" secondAttribute="bottom" constant="20" id="FB5-K3-X12"/>
                                                         <constraint firstItem="MWR-MI-ZtL" firstAttribute="centerY" secondItem="elh-ph-6eK" secondAttribute="centerY" id="Hdd-ec-GgR"/>
                                                         <constraint firstItem="THx-mc-Uba" firstAttribute="centerX" secondItem="X6j-Bc-fT8" secondAttribute="centerX" id="LyT-hu-28r"/>
                                                         <constraint firstItem="DjO-e5-LOV" firstAttribute="centerX" secondItem="X6j-Bc-fT8" secondAttribute="centerX" id="R6y-Tl-K2d"/>
+                                                        <constraint firstItem="kdn-iu-Y01" firstAttribute="leading" secondItem="X6j-Bc-fT8" secondAttribute="trailing" constant="10" id="Ub3-2P-CSF"/>
                                                         <constraint firstItem="KsT-SD-pEh" firstAttribute="leading" secondItem="9Gb-lZ-SYV" secondAttribute="leading" constant="15" id="YQR-vQ-z5a"/>
                                                         <constraint firstItem="X6j-Bc-fT8" firstAttribute="centerX" secondItem="9Gb-lZ-SYV" secondAttribute="centerX" id="a5J-WO-JxZ"/>
                                                         <constraint firstAttribute="bottom" secondItem="elh-ph-6eK" secondAttribute="bottom" constant="10" id="bdc-to-bZQ"/>
@@ -599,6 +604,7 @@
                                             <outlet property="chanceOfRainLabel" destination="Szn-ik-LBL" id="zGa-P3-wpy"/>
                                             <outlet property="cityNameLabel" destination="X6j-Bc-fT8" id="Y67-Yt-bGj"/>
                                             <outlet property="collectionView" destination="3Zn-QW-nwN" id="VQb-A6-cll"/>
+                                            <outlet property="compassImageView" destination="kdn-iu-Y01" id="yJl-0N-ciW"/>
                                             <outlet property="feelsLikeLabel" destination="t3U-Cz-3Vd" id="v4z-RJ-yY8"/>
                                             <outlet property="highTemperatureLabel" destination="MWR-MI-ZtL" id="bhO-0v-WCd"/>
                                             <outlet property="humidityLabel" destination="yx1-wA-1hJ" id="px7-03-gpb"/>
@@ -797,6 +803,9 @@
                                                         <constraint firstItem="Ozx-ft-H0a" firstAttribute="top" secondItem="vMn-8w-z9B" secondAttribute="bottom" id="sZn-60-jQI"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass" translatesAutoresizingMaskIntoConstraints="NO" id="xhi-mP-V4P">
+                                                    <rect key="frame" x="122.5" y="34" width="12" height="12"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elh-1y-mu2">
                                                     <rect key="frame" x="122.5" y="25" width="281.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
@@ -807,14 +816,17 @@
                                             <constraints>
                                                 <constraint firstItem="Qsc-4V-Jbk" firstAttribute="centerY" secondItem="de6-Rv-gd0" secondAttribute="centerY" id="1Nh-KX-Vcy"/>
                                                 <constraint firstItem="Elh-1y-mu2" firstAttribute="leading" secondItem="Qsc-4V-Jbk" secondAttribute="trailing" id="LMz-2V-yDB"/>
+                                                <constraint firstItem="xhi-mP-V4P" firstAttribute="centerY" secondItem="Qsc-4V-Jbk" secondAttribute="centerY" id="R6y-LN-X5D"/>
                                                 <constraint firstItem="Qsc-4V-Jbk" firstAttribute="leading" secondItem="de6-Rv-gd0" secondAttribute="leading" constant="10" id="gjq-4r-x9m"/>
                                                 <constraint firstItem="Elh-1y-mu2" firstAttribute="centerY" secondItem="de6-Rv-gd0" secondAttribute="centerY" id="kMM-WG-8BX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Elh-1y-mu2" secondAttribute="trailing" constant="10" id="lHq-iY-5LE"/>
+                                                <constraint firstItem="xhi-mP-V4P" firstAttribute="leading" secondItem="Qsc-4V-Jbk" secondAttribute="trailing" id="ptG-3o-hFp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cityLabel" destination="Ozx-ft-H0a" id="q8D-XQ-kru"/>
+                                            <outlet property="compassImageView" destination="xhi-mP-V4P" id="tUu-ui-QQL"/>
                                             <outlet property="dateLabel" destination="vMn-8w-z9B" id="PP8-Kh-jwd"/>
                                             <outlet property="temperatureLabel" destination="Elh-1y-mu2" id="6mc-hO-OkW"/>
                                         </connections>
@@ -940,6 +952,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compass" width="12" height="12"/>
         <image name="list_icon" width="22" height="22"/>
         <image name="openweather_logo" width="50" height="21.5"/>
         <image name="plus_icon" width="22" height="22"/>

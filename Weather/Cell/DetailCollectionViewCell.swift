@@ -9,6 +9,7 @@
 import UIKit
 
 class DetailCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var compassImageView: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherNameLabel: UILabel!
@@ -67,6 +68,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
             precipitationLabel.text = "0mm"
         }
         
+        compassImageView.isHidden = !model.isCurrentLocation
     }
 }
 

@@ -13,4 +13,9 @@ class WeatherListTableViewCell: UITableViewCell {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var compassImageView: UIImageView!
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        compassImageView.isHidden = true
+    }
 }

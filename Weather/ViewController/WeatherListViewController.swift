@@ -75,6 +75,13 @@ extension WeatherListViewController: UITableViewDataSource {
         cell.temperatureLabel.text = displayModel.temperature.toTemperatureDegree(isCelsius: rootViewController?.isCelsius ?? true)
         cell.cityLabel.text = displayModel.name
         cell.dateLabel.text = Date(timeIntervalSince1970: Date().timeIntervalSince1970 + displayModel.timeZone).display
+        if displayModel.isCurrentLocation {
+            cell.compassImageView.isHidden = false
+            cell.dateLabel.isHidden = true
+        } else {
+            cell.compassImageView.isHidden = true
+            cell.dateLabel.isHidden = false
+        }
         
         let bgColorView = UIView()
         bgColorView.backgroundColor = .clear
