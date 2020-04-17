@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherDetailViewController: UIViewController {
+class WeatherDetailViewController: UIViewController, OpenWeather {
     private var displayModels: [DisplayModel] = []
     @IBOutlet weak var collectionView: UICollectionView!
     weak var rootViewController: WeatherRootViewController?
@@ -23,6 +23,15 @@ class WeatherDetailViewController: UIViewController {
         self.displayModels = displayModels
         collectionView.reloadData()
     }
+    
+    @IBAction func openWeatherButtonAction(_ sender: UIButton) {
+        showOpenWeatherSafari()
+    }
+    
+    @IBAction func listButtonAction(_ sender: UIButton) {
+        rootViewController?.showListView()
+    }
+    
 }
 
 extension WeatherDetailViewController: UICollectionViewDataSource {
