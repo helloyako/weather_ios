@@ -91,6 +91,14 @@ extension WeatherListViewController: UITableViewDataSource {
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.endUpdates()
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if displayModels[indexPath.row].isCurrentLocation {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 extension WeatherListViewController: UITableViewDelegate {

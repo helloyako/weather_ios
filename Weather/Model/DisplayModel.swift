@@ -30,4 +30,6 @@ struct DisplayModel {
     var uvIndex: Int? = nil
     var daily: [Daily]? = nil
     var hourly: [Hourly]? = nil
+    
+    var isCurrentLocation = false
 }

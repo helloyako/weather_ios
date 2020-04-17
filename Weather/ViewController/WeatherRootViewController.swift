@@ -103,8 +103,9 @@ class WeatherRootViewController: UIViewController {
                     return
                 }
                 
-                let displayModel = weatherResponse.convertDisplayModel()
+                var displayModel = weatherResponse.convertDisplayModel()
                 if isCurrentLocation {
+                    displayModel.isCurrentLocation = true
                     self?.currentLocationModel = displayModel
                 } else {
                     self?.saveID(id: weatherResponse.id)
