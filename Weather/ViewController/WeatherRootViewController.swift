@@ -20,7 +20,8 @@ class WeatherRootViewController: UIViewController {
     @IBOutlet weak var listContainerView: UIView!
     
     
-    var displayModels: [DisplayModel] = []
+    private var displayModels: [DisplayModel] = []
+    private var currentLocationModel: DisplayModel?
     private(set) var isCelsius = true {
         didSet {
             listViewController?.reloadData()
@@ -36,7 +37,7 @@ class WeatherRootViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
 
-        if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
+        if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int], !ids.isEmpty {
             requestCitied(ids: ids)
         } else {
             print("nonono")
@@ -67,7 +68,16 @@ class WeatherRootViewController: UIViewController {
         }
     }
     
-    func requestCitied(ids: [Int]) {
+    private func updateModel() {
+        var d = displayModels
+        if let cur = currentLocationModel {
+            d.insert(cur, at: 0)
+        }
+        listViewController?.updateModel(displayModels: d)
+        detailViewController?.updateModel(displayModels: d)
+    }
+    
+    private func requestCitied(ids: [Int]) {
         WeatherAPI.shared.group(ids: ids) { response in
             switch response {
             case .success(let apiResponse):
@@ -76,10 +86,8 @@ class WeatherRootViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async { [weak self] in
-                    self?.displayModels.append(contentsOf: listResponse.list.map{ $0.convertDisplayModel() })
-                    if let displayModels = self?.displayModels {
-                        self?.listViewController?.updateModel(displayModels: displayModels)
-                    }
+                    self?.displayModels = listResponse.list.map{ $0.convertDisplayModel() }
+                    self?.updateModel()
                 }
             case .error(let error):
                 print(error)
@@ -97,17 +105,14 @@ class WeatherRootViewController: UIViewController {
                 
                 let displayModel = weatherResponse.convertDisplayModel()
                 if isCurrentLocation {
-                    self?.displayModels.insert(displayModel, at: 0)
+                    self?.currentLocationModel = displayModel
                 } else {
                     self?.saveID(id: weatherResponse.id)
                     self?.displayModels.append(displayModel)
                 }
                 
                 DispatchQueue.main.async { [weak self] in
-                    if let displayModels = self?.displayModels {
-                        self?.listViewController?.updateModel(displayModels: displayModels)
-                        self?.detailViewController?.updateModel(displayModels: displayModels)
-                    }
+                    self?.updateModel()
                 }
             case .error(let error):
                 self?.listViewController?.checkPlusButton()
@@ -127,7 +132,12 @@ class WeatherRootViewController: UIViewController {
     }
     
     func removeWeather(at index: Int) {
+        var index = index
+        if currentLocationModel != nil {
+            index = index - 1
+        }
         displayModels.remove(at: index)
+        
         if var array = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
             array.remove(at: index)
             UserDefaults.standard.set(array, forKey: idsKey)
