@@ -26,9 +26,17 @@ extension Date {
     }
     
     var displayAmPm: String {
+        return displayWithAmPm(format: "h:mma")
+    }
+    
+    var displayHourOnlyWithAmPm: String {
+        return displayWithAmPm(format: "ha")
+    }
+    
+    private func displayWithAmPm(format: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "h:mma"
+        dateFormatter.dateFormat = format
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
         return dateFormatter.string(from: self)

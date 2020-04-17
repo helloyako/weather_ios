@@ -35,6 +35,8 @@
 		A09FFE562447ED8700C598D1 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE552447ED8700C598D1 /* extension.swift */; };
 		A09FFE582447F15700C598D1 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE572447F15700C598D1 /* ListResponse.swift */; };
 		A09FFE5A2447F64D00C598D1 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE592447F64D00C598D1 /* WeatherResponse.swift */; };
+		A0B3EFEA2449C74E00F2F7CE /* CalendarUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3EFE92449C74E00F2F7CE /* CalendarUtil.swift */; };
+		A0B3EFEC2449D9B600F2F7CE /* OneCallLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B3EFEB2449D9B600F2F7CE /* OneCallLoadOperation.swift */; };
 		A0DE2AFF244831BB002E1428 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DE2AFE244831BB002E1428 /* OpenWeather.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		A09FFE552447ED8700C598D1 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		A09FFE572447F15700C598D1 /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
 		A09FFE592447F64D00C598D1 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		A0B3EFE92449C74E00F2F7CE /* CalendarUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUtil.swift; sourceTree = "<group>"; };
+		A0B3EFEB2449D9B600F2F7CE /* OneCallLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCallLoadOperation.swift; sourceTree = "<group>"; };
 		A0DE2AFE244831BB002E1428 /* OpenWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				A081B5302445F518006A2FF1 /* WeatherAPI.swift */,
+				A0B3EFEB2449D9B600F2F7CE /* OneCallLoadOperation.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			children = (
 				A09FFE552447ED8700C598D1 /* extension.swift */,
 				A0DE2AFE244831BB002E1428 /* OpenWeather.swift */,
+				A0B3EFE92449C74E00F2F7CE /* CalendarUtil.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -384,6 +390,7 @@
 				A00E5A4E2445651F00189781 /* WeatherListViewController.swift in Sources */,
 				A00E5A5424459B2700189781 /* OneCallResponse.swift in Sources */,
 				A07516072448888D00F4A2B3 /* DisplayModel.swift in Sources */,
+				A0B3EFEA2449C74E00F2F7CE /* CalendarUtil.swift in Sources */,
 				A081B53C24469F4B006A2FF1 /* HourlyCollectionViewCell.swift in Sources */,
 				A081B53524460365006A2FF1 /* Hourly.swift in Sources */,
 				A081B53A24469EFE006A2FF1 /* DetailCollectionViewCell.swift in Sources */,
@@ -397,6 +404,7 @@
 				A0DE2AFF244831BB002E1428 /* OpenWeather.swift in Sources */,
 				A081B5422446EC6B006A2FF1 /* WeatherListTableViewCell.swift in Sources */,
 				A00E5A562445A44800189781 /* Current.swift in Sources */,
+				A0B3EFEC2449D9B600F2F7CE /* OneCallLoadOperation.swift in Sources */,
 				A075160B244896ED00F4A2B3 /* Coord.swift in Sources */,
 				A00E5A1C2445531B00189781 /* AppDelegate.swift in Sources */,
 				A081B53E2446BCF0006A2FF1 /* DailyTableViewCell.swift in Sources */,

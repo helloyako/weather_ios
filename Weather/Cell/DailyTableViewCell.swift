@@ -10,15 +10,15 @@ import UIKit
 
 class DailyTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var maxTemperatureLabel: UILabel!
+    @IBOutlet weak var minTemperatureLabel: UILabel!
+    
+
+    func bind(model: Daily, isCelsius: Bool, timezone: Double) {
+        dayLabel.text = CalendarUtil.shared.getWeekday(model.dt + timezone)
+        maxTemperatureLabel.text = String(model.temp.max.toTemperature(isCelsius: isCelsius))
+        minTemperatureLabel.text = String(model.temp.min.toTemperature(isCelsius: isCelsius))
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

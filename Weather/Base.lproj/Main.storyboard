@@ -99,7 +99,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="- TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-SD-pEh">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-SD-pEh">
                                                             <rect key="frame" x="15" y="267" width="340" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,6 +195,11 @@
                                                                 </constraints>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="75" height="100"/>
+                                                            <connections>
+                                                                <outlet property="hourLabel" destination="Wwh-9F-hLV" id="KTF-Q4-JZM"/>
+                                                                <outlet property="iconImageView" destination="mzc-OF-YtM" id="gSe-b5-KNL"/>
+                                                                <outlet property="temperatureLabel" destination="h06-cj-H03" id="dc9-MS-S6q"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -261,6 +266,12 @@
                                                                                 </constraints>
                                                                             </tableViewCellContentView>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <connections>
+                                                                                <outlet property="dayLabel" destination="Otc-Z4-TFn" id="buq-VE-McS"/>
+                                                                                <outlet property="iconImageView" destination="2w0-l9-xX3" id="2Eh-Mj-gso"/>
+                                                                                <outlet property="maxTemperatureLabel" destination="uCw-ls-n2O" id="9pM-BP-6ZG"/>
+                                                                                <outlet property="minTemperatureLabel" destination="W41-Sg-JXq" id="5ag-Az-N8e"/>
+                                                                            </connections>
                                                                         </tableViewCell>
                                                                     </prototypes>
                                                                 </tableView>
@@ -619,6 +630,7 @@
                                             <outlet property="uviLabel" destination="1eL-ja-w95" id="4JZ-do-bFP"/>
                                             <outlet property="visibilityLabel" destination="g0c-ez-w4r" id="FgN-4r-ZS1"/>
                                             <outlet property="weatherNameLabel" destination="DjO-e5-LOV" id="9i6-E6-VfU"/>
+                                            <outlet property="weekdayLabel" destination="KsT-SD-pEh" id="hpM-5l-wXi"/>
                                             <outlet property="windLabel" destination="MqO-JP-LxB" id="mOU-TO-6fc"/>
                                         </connections>
                                     </collectionViewCell>

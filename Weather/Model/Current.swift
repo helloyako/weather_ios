@@ -9,7 +9,7 @@
 import Foundation
 
 struct Current: Codable {
-    let dt: Int
+    let dt: Double
     let sunrise: Int
     let sunset: Int
     let temp: Double
@@ -26,8 +26,8 @@ struct Current: Codable {
     let snow: Precipitaion?
     
     struct Precipitaion: Codable {
-        let oneH: Double
-        let threeH: Double
+        let oneH: Double?
+        let threeH: Double?
         enum CodingKeys: String, CodingKey {
             case oneH = "1h"
             case threeH = "3h"

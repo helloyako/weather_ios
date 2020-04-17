@@ -25,6 +25,7 @@ class WeatherRootViewController: UIViewController {
     private(set) var isCelsius = true {
         didSet {
             listViewController?.reloadData()
+            detailViewController?.reloadData()
         }
     }
     

@@ -15,6 +15,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var weatherNameLabel: UILabel!
     @IBOutlet weak var highTemperatureLabel: UILabel!
     @IBOutlet weak var lowTemperatureLabel: UILabel!
+    @IBOutlet weak var weekdayLabel: UILabel!
     
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
@@ -46,13 +47,32 @@ class DetailCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private var hourly: [Hourly] = []
+    private var dailly: [Daily] = []
+    var isCelsius = true
+    var timezone: Double = 0
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        hourly.removeAll()
+        dailly.removeAll()
+        timezone = 0
+        isCelsius = true
+        
+        collectionView.reloadData()
+        tableView.reloadData()
+    }
+    
     func bind(model: DisplayModel, isCelsius: Bool) {
+        self.isCelsius = isCelsius
+        timezone = model.timeZone
         cityNameLabel.text = model.name
         temperatureLabel.text = model.temperature.toTemperatureDegree(isCelsius: isCelsius)
         weatherNameLabel.text = model.weatherName
         highTemperatureLabel.text = String(model.maxTemperature.toTemperature(isCelsius: isCelsius))
         lowTemperatureLabel.text = String(model.minTemperature.toTemperature(isCelsius: isCelsius))
-        
+        let timestamp = Date().timeIntervalSince1970 + model.timeZone
+        weekdayLabel.text = CalendarUtil.shared.getWeekday(timestamp)
         
         sunriseLabel.text = Date(timeIntervalSince1970: model.sunrise + model.timeZone).displayAmPm
         sunsetLabel.text = Date(timeIntervalSince1970: model.sunset + model.timeZone).displayAmPm
@@ -70,15 +90,31 @@ class DetailCollectionViewCell: UICollectionViewCell {
         
         compassImageView.isHidden = !model.isCurrentLocation
     }
+    
+    func updateExtraData(model: OneCallResponse) {
+        uviLabel.text = String(model.current.uvi)
+        if hourly.isEmpty {
+            hourly = model.hourly
+            collectionView.reloadData()
+        }
+        
+        if dailly.isEmpty {
+            dailly = model.daily
+            tableView.reloadData()
+        }
+    }
 }
 
 extension DetailCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return hourly.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyCollectionViewCell", for: indexPath)
+        if let hourlyCell = cell as? HourlyCollectionViewCell {
+            hourlyCell.bind(model: hourly[indexPath.item], isCelsius: isCelsius, timezone: timezone)
+        }
         return cell
     }
     
@@ -93,13 +129,15 @@ extension DetailCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 extension DetailCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return dailly.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DailyTableViewCell") as? DailyTableViewCell else {
             return UITableViewCell()
         }
+        
+        cell.bind(model: dailly[indexPath.item], isCelsius: isCelsius, timezone: timezone)
         
         return cell
     }
