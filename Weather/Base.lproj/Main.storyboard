@@ -763,7 +763,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3y-t5-v79">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3y-t5-v79">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="1cM-Ar-jOH">
@@ -842,6 +842,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="utJ-YX-gmb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qsc-4V-Jbk">
                                                     <rect key="frame" x="10" y="19.5" width="112.5" height="41"/>
                                                     <subviews>
@@ -880,16 +883,22 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Qsc-4V-Jbk" firstAttribute="centerY" secondItem="de6-Rv-gd0" secondAttribute="centerY" id="1Nh-KX-Vcy"/>
+                                                <constraint firstItem="Elh-1y-mu2" firstAttribute="centerY" secondItem="Qsc-4V-Jbk" secondAttribute="centerY" id="4yq-8h-0F9"/>
+                                                <constraint firstAttribute="bottom" secondItem="utJ-YX-gmb" secondAttribute="bottom" id="4z0-cK-7eH"/>
+                                                <constraint firstAttribute="trailing" secondItem="utJ-YX-gmb" secondAttribute="trailing" id="EyF-wv-Mzw"/>
                                                 <constraint firstItem="Elh-1y-mu2" firstAttribute="leading" secondItem="Qsc-4V-Jbk" secondAttribute="trailing" id="LMz-2V-yDB"/>
                                                 <constraint firstItem="xhi-mP-V4P" firstAttribute="centerY" secondItem="Qsc-4V-Jbk" secondAttribute="centerY" id="R6y-LN-X5D"/>
+                                                <constraint firstItem="utJ-YX-gmb" firstAttribute="leading" secondItem="de6-Rv-gd0" secondAttribute="leading" id="dNU-z8-uEd"/>
                                                 <constraint firstItem="Qsc-4V-Jbk" firstAttribute="leading" secondItem="de6-Rv-gd0" secondAttribute="leading" constant="10" id="gjq-4r-x9m"/>
-                                                <constraint firstItem="Elh-1y-mu2" firstAttribute="centerY" secondItem="de6-Rv-gd0" secondAttribute="centerY" id="kMM-WG-8BX"/>
                                                 <constraint firstAttribute="trailing" secondItem="Elh-1y-mu2" secondAttribute="trailing" constant="10" id="lHq-iY-5LE"/>
+                                                <constraint firstItem="utJ-YX-gmb" firstAttribute="top" secondItem="de6-Rv-gd0" secondAttribute="top" id="psy-hE-y8e"/>
                                                 <constraint firstItem="xhi-mP-V4P" firstAttribute="leading" secondItem="Qsc-4V-Jbk" secondAttribute="trailing" id="ptG-3o-hFp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="backgroundImageView" destination="utJ-YX-gmb" id="JId-XX-fZI"/>
+                                            <outlet property="centerYConstraint" destination="1Nh-KX-Vcy" id="U9Q-aA-JIl"/>
                                             <outlet property="cityLabel" destination="Ozx-ft-H0a" id="q8D-XQ-kru"/>
                                             <outlet property="compassImageView" destination="xhi-mP-V4P" id="tUu-ui-QQL"/>
                                             <outlet property="dateLabel" destination="vMn-8w-z9B" id="PP8-Kh-jwd"/>

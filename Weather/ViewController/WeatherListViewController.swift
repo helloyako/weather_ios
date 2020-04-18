@@ -83,6 +83,18 @@ extension WeatherListViewController: UITableViewDataSource {
             cell.dateLabel.isHidden = false
         }
         
+        if let icon = displayModel.weather.first?.icon, let image = UIImage(named: icon) {
+            cell.backgroundImageView.image = image
+        } else {
+            cell.backgroundImageView.image = .none
+        }
+        
+        if indexPath.row == 0 {
+            cell.centerYConstraint.constant = view.safeAreaInsets.top / 2
+        } else {
+            cell.centerYConstraint.constant = 0
+        }
+        
         let bgColorView = UIView()
         bgColorView.backgroundColor = .clear
         cell.selectedBackgroundView = bgColorView
@@ -104,6 +116,15 @@ extension WeatherListViewController: UITableViewDataSource {
             return false
         } else {
             return true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let height: CGFloat = 80
+        if indexPath.row == 0 {
+            return height + view.safeAreaInsets.top
+        } else {
+            return height
         }
     }
 }

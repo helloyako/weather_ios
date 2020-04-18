@@ -10,6 +10,8 @@ import UIKit
 
 class WeatherListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var centerYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
