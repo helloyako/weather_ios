@@ -13,7 +13,7 @@ struct DisplayModel {
     let temperature: Double
     let name: String
     let timeZone: Double
-    var weatherName: String?
+    var weather: [Weather]
     let maxTemperature: Double
     let minTemperature: Double
     var sunset: Double

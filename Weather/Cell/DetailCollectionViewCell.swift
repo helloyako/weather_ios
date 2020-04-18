@@ -68,7 +68,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         timezone = model.timeZone
         cityNameLabel.text = model.name
         temperatureLabel.text = model.temperature.toTemperatureDegree(isCelsius: isCelsius)
-        weatherNameLabel.text = model.weatherName
+        weatherNameLabel.text = model.weather.first?.main
         highTemperatureLabel.text = String(model.maxTemperature.toTemperature(isCelsius: isCelsius))
         lowTemperatureLabel.text = String(model.minTemperature.toTemperature(isCelsius: isCelsius))
         let timestamp = Date().timeIntervalSince1970 + model.timeZone
