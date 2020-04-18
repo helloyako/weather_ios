@@ -54,6 +54,26 @@ class WeatherDetailViewController: UIViewController, OpenWeather {
         }
     }
     
+    private func setBackgroundImageView(index: Int) {
+        if let image = getBackgroundImage(index: index) {
+            currentImageView.image = image
+        } else {
+            currentImageView.image = .none
+        }
+        
+        if let image = getBackgroundImage(index: index - 1) {
+            leftImageView.image = image
+        } else {
+            leftImageView.image = .none
+        }
+        
+        if let image = getBackgroundImage(index: index + 1) {
+            rightImageView.image = image
+        } else {
+            rightImageView.image = .none
+        }
+    }
+    
     func updateModel(displayModels: [DisplayModel]) {
         self.displayModels = displayModels
         if displayModels.count > 1 {
@@ -63,9 +83,8 @@ class WeatherDetailViewController: UIViewController, OpenWeather {
             pageControl.isHidden = true
         }
         
-        if let image = getBackgroundImage(index: 0) {
-            currentImageView.image = image
-        }
+        let index = pageControl.currentPage
+        setBackgroundImageView(index: index)
         
         collectionView.reloadData()
     }
@@ -74,6 +93,7 @@ class WeatherDetailViewController: UIViewController, OpenWeather {
         let indexPath = IndexPath(item: index, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .right, animated: false)
         pageControl.currentPage = index
+        setBackgroundImageView(index: index)
     }
     
     func reloadData() {
