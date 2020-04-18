@@ -71,7 +71,7 @@ class WeatherRootViewController: UIViewController {
     }
     
     private func loadStoredCitiesWeather() {
-        if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int], !ids.isEmpty {
+        if let ids = getStoredID(), !ids.isEmpty {
             requestCitied(ids: ids)
         } else {
             print("nonono")
@@ -94,7 +94,7 @@ class WeatherRootViewController: UIViewController {
     }
     
     private func saveID(id: Int) {
-        if var array = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
+        if var array = getStoredID() {
             if !array.contains(id) {
                 array.append(id)
                 UserDefaults.standard.set(array, forKey: idsKey)
@@ -103,6 +103,10 @@ class WeatherRootViewController: UIViewController {
             let array = [id]
             UserDefaults.standard.set(array, forKey: idsKey)
         }
+    }
+    
+    private func getStoredID() -> [Int]? {
+        return UserDefaults.standard.array(forKey: idsKey) as? [Int]
     }
     
     private func updateModel() {
@@ -176,7 +180,7 @@ class WeatherRootViewController: UIViewController {
         }
         displayModels.remove(at: index)
         
-        if var array = UserDefaults.standard.array(forKey: idsKey) as? [Int] {
+        if var array = getStoredID() {
             array.remove(at: index)
             UserDefaults.standard.set(array, forKey: idsKey)
         }
@@ -202,7 +206,11 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
         switch status{
         case .restricted, .denied:
             print("you should allow permission")
-            showListView()
+            if let _ = getStoredID() {
+                showDetailView(at: 0)
+            } else {
+                showListView()
+            }
         case .notDetermined:
             print("notDetermined")
         default:
