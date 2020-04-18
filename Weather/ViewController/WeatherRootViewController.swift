@@ -12,6 +12,7 @@ import CoreLocation
 class WeatherRootViewController: UIViewController {
     private let idsKey = "ids"
     private let locationManager = CLLocationManager()
+    private var isFromBackground = false
     
     private weak var listViewController: WeatherListViewController? = nil
     private weak var detailViewController: WeatherDetailViewController? = nil
@@ -38,13 +39,14 @@ class WeatherRootViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
 
-        if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int], !ids.isEmpty {
-            requestCitied(ids: ids)
-        } else {
-            print("nonono")
-        }
+        loadStoredCitiesWeather()
         
-        // Do any additional setup after loading the view.
+        addObservers()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeObservers()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,6 +57,40 @@ class WeatherRootViewController: UIViewController {
             destination.rootViewController = self
             detailViewController = destination
         }
+    }
+    
+    
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onDidRBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.onDidEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    private func loadStoredCitiesWeather() {
+        if let ids = UserDefaults.standard.array(forKey: idsKey) as? [Int], !ids.isEmpty {
+            requestCitied(ids: ids)
+        } else {
+            print("nonono")
+        }
+    }
+    
+    @objc private func onDidRBecomeActive() {
+        guard isFromBackground else {
+            return
+        }
+        isFromBackground = false
+        if currentLocationModel != nil {
+            locationManager.requestLocation()
+        }
+        loadStoredCitiesWeather()
+    }
+    
+    @objc private func onDidEnterBackground() {
+        isFromBackground = true
     }
     
     private func saveID(id: Int) {
@@ -161,6 +197,7 @@ class WeatherRootViewController: UIViewController {
 
 
 extension WeatherRootViewController: CLLocationManagerDelegate {
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status{
         case .restricted, .denied:
