@@ -66,7 +66,7 @@ class WeatherAPI {
             return
         }
         let request = URLRequest(url: url)
-        
+        print(url.absoluteString)
         let dataTask = defaultSession.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 if let error = error {
@@ -148,6 +148,12 @@ class WeatherAPI {
     }
     
     private var commonParameter: String {
-        return "appid=\(apiKey)&units=metric"
+        let defaultLanguage = "en"
+        let preferredLanguage = Locale.preferredLanguages.first ?? defaultLanguage
+        var code = Locale(identifier: preferredLanguage).languageCode ?? defaultLanguage
+        if code == "ko" {
+            code = "kr"
+        }
+        return "appid=\(apiKey)&units=metric&lang=\(code)"
     }
 }

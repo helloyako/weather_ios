@@ -143,7 +143,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-SD-pEh">
-                                                                            <rect key="frame" x="0.0" y="267" width="370" height="23"/>
+                                                                            <rect key="frame" x="20" y="267" width="350" height="23"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -177,7 +177,7 @@
                                                                         <constraint firstItem="THx-mc-Uba" firstAttribute="centerX" secondItem="X6j-Bc-fT8" secondAttribute="centerX" id="LyT-hu-28r"/>
                                                                         <constraint firstItem="DjO-e5-LOV" firstAttribute="centerX" secondItem="X6j-Bc-fT8" secondAttribute="centerX" id="R6y-Tl-K2d"/>
                                                                         <constraint firstItem="kdn-iu-Y01" firstAttribute="leading" secondItem="X6j-Bc-fT8" secondAttribute="trailing" constant="10" id="Ub3-2P-CSF"/>
-                                                                        <constraint firstItem="KsT-SD-pEh" firstAttribute="leading" secondItem="9Gb-lZ-SYV" secondAttribute="leading" id="YQR-vQ-z5a"/>
+                                                                        <constraint firstItem="KsT-SD-pEh" firstAttribute="leading" secondItem="9Gb-lZ-SYV" secondAttribute="leading" constant="20" id="YQR-vQ-z5a"/>
                                                                         <constraint firstItem="X6j-Bc-fT8" firstAttribute="centerX" secondItem="9Gb-lZ-SYV" secondAttribute="centerX" id="a5J-WO-JxZ"/>
                                                                         <constraint firstAttribute="bottom" secondItem="elh-ph-6eK" secondAttribute="bottom" constant="10" id="bdc-to-bZQ"/>
                                                                         <constraint firstItem="o0g-P6-3Nf" firstAttribute="leading" secondItem="9Gb-lZ-SYV" secondAttribute="leading" id="bmx-6b-Q3g"/>

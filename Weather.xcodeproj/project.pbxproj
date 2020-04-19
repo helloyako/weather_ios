@@ -32,6 +32,7 @@
 		A081B5422446EC6B006A2FF1 /* WeatherListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */; };
 		A081B544244702EE006A2FF1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081B543244702EE006A2FF1 /* SearchViewController.swift */; };
 		A081B547244742A5006A2FF1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A081B546244742A5006A2FF1 /* MapKit.framework */; };
+		A095FC1B244BF29700E1ABCF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A095FC1D244BF29700E1ABCF /* Localizable.strings */; };
 		A09FFE562447ED8700C598D1 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE552447ED8700C598D1 /* extension.swift */; };
 		A09FFE582447F15700C598D1 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE572447F15700C598D1 /* ListResponse.swift */; };
 		A09FFE5A2447F64D00C598D1 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09FFE592447F64D00C598D1 /* WeatherResponse.swift */; };
@@ -89,6 +90,10 @@
 		A081B5412446EC6B006A2FF1 /* WeatherListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewCell.swift; sourceTree = "<group>"; };
 		A081B543244702EE006A2FF1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A081B546244742A5006A2FF1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A095FC18244BF24700E1ABCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		A095FC1C244BF29700E1ABCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A095FC1E244BF29C00E1ABCF /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A095FC20244BF36800E1ABCF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A09FFE552447ED8700C598D1 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		A09FFE572447F15700C598D1 /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
 		A09FFE592447F64D00C598D1 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
@@ -165,6 +170,7 @@
 				A00E5A242445531C00189781 /* Assets.xcassets */,
 				A00E5A262445531C00189781 /* LaunchScreen.storyboard */,
 				A00E5A292445531C00189781 /* Info.plist */,
+				A095FC1D244BF29700E1ABCF /* Localizable.strings */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = A00E5A0F2445531B00189781;
 			productRefGroup = A00E5A192445531B00189781 /* Products */;
@@ -359,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A00E5A282445531C00189781 /* LaunchScreen.storyboard in Resources */,
+				A095FC1B244BF29700E1ABCF /* Localizable.strings in Resources */,
 				A00E5A252445531C00189781 /* Assets.xcassets in Resources */,
 				A00E5A232445531B00189781 /* Main.storyboard in Resources */,
 			);
@@ -449,6 +457,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A00E5A222445531B00189781 /* Base */,
+				A095FC18244BF24700E1ABCF /* ko */,
+				A095FC20244BF36800E1ABCF /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -461,6 +471,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		A095FC1D244BF29700E1ABCF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A095FC1C244BF29700E1ABCF /* en */,
+				A095FC1E244BF29C00E1ABCF /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -468,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -528,6 +548,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

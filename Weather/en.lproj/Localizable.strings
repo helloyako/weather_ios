@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Weather
+
+  Created by helloyako on 2020/04/19.
+  Copyright © 2020 helloyako. All rights reserved.
+*/
+
+"weekdays" = "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday";
+"cardinal_points" = "N,NNE,NE,ENE,E,ESE,SE,SSE,S,SSW,SW,WSW,W,WNW,NW,NNW";

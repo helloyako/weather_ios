@@ -1,0 +1,126 @@
+
+/* Class = "UILabel"; text = "SUNRISE"; ObjectID = "07a-Cm-b7r"; */
+"07a-Cm-b7r.text" = "일출";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "1WU-ck-gee"; */
+"1WU-ck-gee.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "1eL-ja-w95"; */
+"1eL-ja-w95.text" = "-";
+
+/* Class = "UILabel"; text = "UV INDEX"; ObjectID = "650-ub-unt"; */
+"650-ub-unt.text" = "자외선 지수";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "BqK-Zz-HId"; */
+"BqK-Zz-HId.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "DjO-e5-LOV"; */
+"DjO-e5-LOV.text" = "-";
+
+/* Class = "UILabel"; text = "20°"; ObjectID = "Elh-1y-mu2"; */
+"Elh-1y-mu2.text" = "20°";
+
+/* Class = "UILabel"; text = "SUNSET"; ObjectID = "JYP-Zy-8da"; */
+"JYP-Zy-8da.text" = "일몰";
+
+/* Class = "UILabel"; text = "Enter city"; ObjectID = "Jga-TV-feV"; */
+"Jga-TV-feV.text" = "도시 입력";
+
+/* Class = "UILabel"; text = "CHANCE OF RAIN"; ObjectID = "KEv-9l-bZz"; */
+"KEv-9l-bZz.text" = "비 올 확률";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "KsT-SD-pEh"; */
+"KsT-SD-pEh.text" = "-";
+
+/* Class = "UILabel"; text = "- cm"; ObjectID = "MPb-YQ-jhT"; */
+"MPb-YQ-jhT.text" = "- cm";
+
+/* Class = "UILabel"; text = "21"; ObjectID = "MWR-MI-ZtL"; */
+"MWR-MI-ZtL.text" = "21";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "MqO-JP-LxB"; */
+"MqO-JP-LxB.text" = "-";
+
+/* Class = "UILabel"; text = "WEDNESDAY"; ObjectID = "Otc-Z4-TFn"; */
+"Otc-Z4-TFn.text" = "WEDNESDAY";
+
+/* Class = "UILabel"; text = "Yuseong-gu"; ObjectID = "Ozx-ft-H0a"; */
+"Ozx-ft-H0a.text" = "Yuseong-gu";
+
+/* Class = "UILabel"; text = "VISIBILITY"; ObjectID = "QdF-1D-sBs"; */
+"QdF-1D-sBs.text" = "가시거리";
+
+/* Class = "UILabel"; text = "-%"; ObjectID = "Szn-ik-LBL"; */
+"Szn-ik-LBL.text" = "-%";
+
+/* Class = "UILabel"; text = "--°"; ObjectID = "THx-mc-Uba"; */
+"THx-mc-Uba.text" = "--°";
+
+/* Class = "UILabel"; text = "FEELS LIKE"; ObjectID = "Tfk-H4-Adt"; */
+"Tfk-H4-Adt.text" = "체감";
+
+/* Class = "UILabel"; text = "- hPa"; ObjectID = "UAj-Qr-iMn"; */
+"UAj-Qr-iMn.text" = "- hPa";
+
+/* Class = "UILabel"; text = "HUMIDITY"; ObjectID = "VXg-C5-enX"; */
+"VXg-C5-enX.text" = "습도";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "W41-Sg-JXq"; */
+"W41-Sg-JXq.text" = "3";
+
+/* Class = "UILabel"; text = "10AM"; ObjectID = "Wwh-9F-hLV"; */
+"Wwh-9F-hLV.text" = "10AM";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "X6j-Bc-fT8"; */
+"X6j-Bc-fT8.text" = "-";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "elh-ph-6eK"; */
+"elh-ph-6eK.text" = "3";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "f3p-HZ-mlu"; */
+"f3p-HZ-mlu.text" = "Title";
+
+/* Class = "UILabel"; text = "- km"; ObjectID = "g0c-ez-w4r"; */
+"g0c-ez-w4r.text" = "- km";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "gD7-ED-Xqm"; */
+"gD7-ED-Xqm.text" = "-";
+
+/* Class = "UILabel"; text = "15°"; ObjectID = "h06-cj-H03"; */
+"h06-cj-H03.text" = "15°";
+
+/* Class = "UIButton"; normalTitle = "°C"; ObjectID = "iJt-fK-t76"; */
+"iJt-fK-t76.normalTitle" = "°C";
+
+/* Class = "UILabel"; text = "PRECIPITATION"; ObjectID = "ixZ-K5-P8c"; */
+"ixZ-K5-P8c.text" = "강수량";
+
+/* Class = "UIButton"; normalTitle = "°F"; ObjectID = "jZ8-Br-PuF"; */
+"jZ8-Br-PuF.normalTitle" = "°F";
+
+/* Class = "UILabel"; text = "/"; ObjectID = "lLH-Vh-ABI"; */
+"lLH-Vh-ABI.text" = "/";
+
+/* Class = "UITextField"; placeholder = "Search"; ObjectID = "pUk-iu-Jxb"; */
+"pUk-iu-Jxb.placeholder" = "검색";
+
+/* Class = "UILabel"; text = "PRESSURE"; ObjectID = "qF0-b3-LLv"; */
+"qF0-b3-LLv.text" = "기압";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "t3U-Cz-3Vd"; */
+"t3U-Cz-3Vd.text" = "-";
+
+/* Class = "UILabel"; text = "21"; ObjectID = "uCw-ls-n2O"; */
+"uCw-ls-n2O.text" = "21";
+
+/* Class = "UILabel"; text = "4:13 PM"; ObjectID = "vMn-8w-z9B"; */
+"vMn-8w-z9B.text" = "4:13 PM";
+
+/* Class = "UILabel"; text = "Today: Partly cloudy currently. the high will be 22. Mostly cloudy tonight with a low of 4"; ObjectID = "yhe-eW-YHP"; */
+"yhe-eW-YHP.text" = "오늘: 현재 날씨 대체로 흐림. 최고 기온은 17° 입니다. 오늘 밤 날씨 한때 흐림, 최저기온은 8° 입니다";
+
+/* Class = "UILabel"; text = "WND"; ObjectID = "yli-Uu-Z5F"; */
+"yli-Uu-Z5F.text" = "바람";
+
+/* Class = "UILabel"; text = "-%"; ObjectID = "yx1-wA-1hJ"; */
+"yx1-wA-1hJ.text" = "-%";

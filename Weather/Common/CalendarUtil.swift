@@ -12,7 +12,7 @@ class CalendarUtil {
     static let shared = CalendarUtil()
     private let weekdayMap: [Int: String]
     private init() {
-        let string = "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday"
+        let string = NSLocalizedString("weekdays", comment: "")
         let array = string.split(separator: ",").map { String($0) }
         var map: [Int: String] = [:]
         for i in 0..<array.count {
