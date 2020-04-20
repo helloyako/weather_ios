@@ -66,7 +66,6 @@ class WeatherAPI {
             return
         }
         let request = URLRequest(url: url)
-        print(url.absoluteString)
         let dataTask = defaultSession.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 if let error = error {

@@ -73,8 +73,6 @@ class WeatherRootViewController: UIViewController {
     private func loadStoredCitiesWeather() {
         if let ids = getStoredID(), !ids.isEmpty {
             requestCitied(ids: ids)
-        } else {
-            print("nonono")
         }
     }
     
@@ -205,7 +203,6 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status{
         case .restricted, .denied:
-            print("you should allow permission")
             if let _ = getStoredID() {
                 showDetailView(at: 0)
             } else {
@@ -214,7 +211,6 @@ extension WeatherRootViewController: CLLocationManagerDelegate {
         case .notDetermined:
             print("notDetermined")
         default:
-            print("greate!!")
             showDetailView(at: 0)
             manager.startUpdatingLocation()
         }
